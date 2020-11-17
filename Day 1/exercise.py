@@ -5,13 +5,15 @@ random_number = random.randint(0,100)
 is_even = random_number % 2 == 0
 
 primes = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97)
-is_prime = primes.count(random_number) == 1
+#is_prime = primes.count(random_number) == 1
+is_prime = random_number in primes
 
 squares = tuple(number * number for number in range(1,11))
 #for r in range(1,11):
 #    squares.append(r * r)
 
-is_square = squares.count(random_number) == 1
+#is_square = squares.count(random_number) == 1
+is_square = random_number in squares
 
 guesses = 0
 
