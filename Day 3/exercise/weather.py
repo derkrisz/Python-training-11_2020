@@ -1,5 +1,6 @@
 from random import randint
 from location import Location
+from modules.validation import validate_string
 
 class Weather:
     def __init__(self, description, temperature, location):
@@ -13,7 +14,7 @@ class Weather:
     
     @description.setter
     def description(self, description):
-        self.__description = description
+        self.__description = self.validate_description(description)
    
     @property
     def temperature(self):
@@ -37,6 +38,10 @@ class Weather:
         else:
             pass
 
+    @validate_string
+    def validate_description(self, description):
+        return description
+
     def change_temp(self):
         self.temperature = randint(-5, 30)
 
@@ -52,4 +57,6 @@ if __name__ == '__main__':
     w = Weather('It\'s very warm here!', 30.5, l)
     print(w)
     w.change_temp()
+    print(w)
+    w.description = 'Boiling'
     print(w)
