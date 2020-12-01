@@ -1,4 +1,5 @@
 from modules.cleanup import Cleanup
+from weather import Weather
 import requests, json
 
 def get_data(city, country):
@@ -14,6 +15,8 @@ def get_data(city, country):
         print('Something went wrong. ', err)
     finally:
         return j
+
+def 
 
 
 
@@ -31,5 +34,10 @@ if __name__ == '__main__':
     json_temp_feels_like = data['main']['feels_like']
     json_wind_speed = data['wind']['speed']
     json_wind_direction = data['wind']['deg']
-    output = f'The weather in {json_city}, {json_country} is {json_description}. The temperature is {json_temperature}, it feels like {json_temp_feels_like}. Wind is {json_wind_speed} {json_wind_direction} deg.'
-    print(output)
+    #output = f'The weather in {json_city}, {json_country} is {json_description}. The temperature is {json_temperature}, it feels like {json_temp_feels_like}. Wind is {json_wind_speed} {json_wind_direction} deg.'
+    #print(output)
+    weather = Weather(json_city, json_country, json_description, json_temperature)
+    print(weather)
+    weather.change_temp()
+    print(weather)
+    weather.show_Kelvin_temp()

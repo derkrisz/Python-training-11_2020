@@ -1,5 +1,6 @@
 from weather import Weather
 import datetime
+from modules.validation import compare_dates
 
 class HistoricalWeather(Weather):
     def __init__(self, description, temperature, location, date):
@@ -13,19 +14,6 @@ class HistoricalWeather(Weather):
     @date.setter
     def date(self, date):
         self.__date = date
-
-def dates_equal(func):
-    def inner (*args, **kwargs):
-        result = func(*args, **kwargs)
-        if result:
-            return 'These historical values are equal'
-        else:
-            return 'These historical values are not equal'
-    return inner
-
-@dates_equal
-def compare_dates(self, other):
-    return self.date == other.date
 
 
 if __name__ == '__main__':
