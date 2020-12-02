@@ -16,8 +16,6 @@ def get_data(city, country):
     finally:
         return j
 
-def 
-
 
 
 if __name__ == '__main__':
