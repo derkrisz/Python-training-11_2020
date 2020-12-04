@@ -1,4 +1,5 @@
 from modules.cleanup import Cleanup
+from modules.db_conn import create_db, add_weather_to_db, retrieve_weathers
 from weather import Weather
 import requests, json
 
@@ -19,6 +20,7 @@ def get_data(city, country):
 
 
 if __name__ == '__main__':
+    #create_db('weather.db')
     city = input('Enter a city ')
     country = input('Enter a country code (2-3 letters, like: hun, uk) ')
     cleaned = Cleanup.cleanup(city=city, country=country)
@@ -36,6 +38,8 @@ if __name__ == '__main__':
     #print(output)
     weather = Weather(json_city, json_country, json_description, json_temperature)
     print(weather)
-    weather.change_temp()
+    #weather.change_temp()
     print(weather)
     weather.show_Kelvin_temp()
+    add_weather_to_db('weather.db', weather)
+    retrieve_weathers('weather.db')
